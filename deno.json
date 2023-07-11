@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "start": "deno run --allow-read --allow-sys --allow-net --allow-env mod.js"
+  },
+  "fmt": {
+    "singleQuote": true,
+    "semiColons": false
+  }
+}
