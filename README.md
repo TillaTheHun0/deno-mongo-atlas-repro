@@ -18,8 +18,8 @@ minutes, a ECONNRESET error is thrown which crashes the process.
 > have a free tier, and I don't want to post credentials on a public repo and
 > run up a bill.
 
-You'll need to setup an Atlas Serverless Cluster. One can be setup with
-zero config on the Atlas Dashboard.
+You'll need to setup an Atlas Serverless Cluster. One can be setup with zero
+config on the Atlas Dashboard.
 
 When your Serverless Cluster is spun up, Click the ellipsis and "Load Sample
 Dataset" into the Serverless Cluster. This will take a minute or two.
@@ -41,6 +41,9 @@ typescript 5.1.6
 > Dashboard. It will look something like
 > `mongodb+srv://<username>:<password>@<cluster-name>.<lb>.mongodb.net/?retryWrites=true&w=majority`
 
+> You can also set `PORT` to the port you would like to listen on. Useful if
+> you're comparing servers side-by-side
+
 - Start the server either by cloning this repo and running `deno task start` or
   simply run
   `deno run --allow-read --allow-sys --allow-net --allow-env https://raw.githubusercontent.com/TillaTheHun0/deno-mongo-atlas-repro/main/mod.js`
@@ -58,3 +61,10 @@ error: Uncaught Error: read ECONNRESET
   at TCP.#read (ext:deno_node/internal_binding/stream_wrap.ts:225:18)
   at eventLoopTick (ext:core/01_core.js:183:11)
 ```
+
+### Run with Ping
+
+To perform a periodic ping of the MongoDB cluster, set `PING` to the number of
+milliseconds between pings ie. `60000` for one minute interval.
+
+By default, no ping is performed.
