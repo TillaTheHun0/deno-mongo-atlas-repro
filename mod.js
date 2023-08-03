@@ -14,12 +14,12 @@ const findIn =
 async function main({ ping, client, port, find }) {
   globalThis.addEventListener(
     'unhandledrejection',
-    () => console.timeEnd('connection'),
+    () => console.timeEnd('connection', `Connection dropped ${(new Date()).toISOString()}`),
   )
 
   console.time('connection')
   await client.connect()
-  console.timeLog('connection', 'Connection established')
+  console.timeLog('connection', `Connection established ${(new Date()).toISOString()}`)
 
   const find10With = find({ filter: {}, options: { limit: 10 } })
 
